@@ -80,6 +80,9 @@ spec conflict, stop and ask me. Never silently reinterpret requirements.
    permanent deletion. Archive is distinct from delete.
 9. Tasks: auto-reschedule applies only to tasks flagged flexible. Deadline
    tasks stay overdue until the user acts.
+10. Database migrations: Never use fallbackToDestructiveMigration anywhere.
+    A database migration must never silently erase the knowledge library.
+    Room schema must be exported to app/schemas/ and tracked in version control.
 
 ## Working method (MANDATORY)
 - Work in small phases from the spec (section 20). Do ONLY the phase I name.

@@ -12,6 +12,18 @@ android {
         targetSdk 36
         versionCode 1
         versionName "0.1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas"]
+            }
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 
     compileOptions {
@@ -33,6 +45,9 @@ dependencies {
     annotationProcessor libs.room.compiler
     implementation libs.workmanager
     implementation libs.material
+    implementation libs.gson
     testImplementation libs.junit
     testImplementation libs.mockito.core
+    testImplementation libs.robolectric
+    testImplementation libs.room.testing
 }

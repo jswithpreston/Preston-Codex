@@ -1,0 +1,7 @@
+# Book: Ancient Proverb
+# Type: BOOK
+
+**Quote:**
+The best time to plant a tree was twenty years ago. The second best time is now.
+**Insight:**
+Start immediately without regret.
