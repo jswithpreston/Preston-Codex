@@ -1,0 +1,68 @@
+# PROJECT: Preston Codex (native Android)
+
+You are a senior Android engineer building "Preston Codex": an offline-first
+personal planner + knowledge-retention app. The full product spec is in
+docs/SPEC.md. It is the source of truth. If this file and the spec conflict,
+stop and ask me. Never silently reinterpret requirements.
+
+## Stack (fixed)
+- Native Android, Java 17, XML + Material Components (UI comes last).
+- Room/SQLite, WorkManager, AppWidgetProvider + RemoteViews.
+- Gradle with wrapper, version catalog (libs.versions.toml), pinned versions.
+  minSdk 26, compileSdk/targetSdk = current stable. Verify the latest stable
+  AGP/Gradle/Room/WorkManager/Material versions rather than guessing.
+- JUnit4 + Mockito for unit tests, Room in-memory DB for DAO tests,
+  Robolectric only where Android classes are unavoidable.
+- No backend, no AI/network dependency, no Rust, no Kotlin, no analytics.
+- Package: com.preston.codex
+
+## Architecture rules
+- Layers: domain / data / importer / android-integration / ui (see spec 14.3).
+- domain/ and importer/ MUST NOT import android.* (pure Java, JVM-testable).
+- No business rules in Activities, Fragments, or widget providers.
+- All DB multi-record operations run in transactions.
+- Time: inject a Clock; never call System.currentTimeMillis()/LocalDate.now()
+  directly in domain code. Use java.time (desugaring enabled).
+- Never log quotes, notes, or other private content.
+
+## Locked decisions (record these in docs/DECISIONS.md; change only with my approval)
+1. Import identity: explicit ID field > fingerprint (SHA-256 of normalized
+   source title + normalized quote text) > fuzzy match. Normalization: trim,
+   collapse whitespace, unify line endings and quote characters; do NOT strip
+   words or meaningful punctuation.
+2. Potential duplicate = same or different source, normalized-token Jaccard
+   similarity >= 0.85 and no exact/ID match. Flag for review; never auto-merge.
+   Similar quotes from DIFFERENT sources are never auto-merged.
+3. Unknown Markdown fields are preserved verbatim in an `extraFields` JSON
+   column (no data loss) and reported in the preview.
+4. Daily insight: one canonical row per local date. Shuffle replaces that
+   day's selection and appends to a selection-history table. The app and widget
+   read the same row. No consecutive-day repeats when >= 2 eligible entries.
+5. Spaced repetition: deterministic, interval-ladder based.
+   Forgot -> 1 day, reset step to 0. Difficult -> repeat at max(1, step-1)
+   ladder position. Remembered -> advance 1 step. Easy -> advance 2 steps.
+   Default ladder (days): 1, 3, 7, 14, 30, 60, 120. Configurable daily
+   review limit (default 20). Overdue items sorted by days overdue, then
+   lowest step. Full review history kept; changing the ladder never rewrites
+   history.
+6. Recurrence edits: always ask scope ("this occurrence", "this and future").
+   Past occurrences are never rewritten. Each occurrence has its own status.
+7. Restore: replace-after-confirmation. Validate the backup, show contents,
+   snapshot the current DB first, roll back on failure. Backup format is a
+   versioned ZIP (manifest.json with schemaVersion + JSON/Markdown payloads).
+8. Deleted entries go to a recoverable "trash" state for 30 days before
+   permanent deletion. Archive is distinct from delete.
+9. Tasks: auto-reschedule applies only to tasks flagged flexible. Deadline
+   tasks stay overdue until the user acts.
+
+## Working method (MANDATORY)
+- Work in small phases from the spec (section 20). Do ONLY the phase I name.
+- Before coding a phase: produce a short implementation plan and list files you
+  will create or change. Wait for my approval.
+- Write tests FIRST for parsers, matching, scheduling, and review logic.
+- After each phase: run the build and all tests, then give me: what was built,
+  test results, deviations from the spec, open questions.
+- A phase is done only when ./gradlew test and ./gradlew assembleDebug pass.
+- Do not build UI polish, extra features, or "nice-to-haves" outside the spec.
+- If a requirement is ambiguous, ask. Do not guess on data-integrity behavior.
+- Commit per logical unit with clear messages.
