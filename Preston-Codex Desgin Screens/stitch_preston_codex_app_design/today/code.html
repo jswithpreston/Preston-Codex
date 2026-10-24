@@ -1,0 +1,393 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Today — Codex &amp; Ephemeris</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter & Source Serif 4 -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#7c89aa",
+            "secondary-fixed-dim": "#feb956",
+            "error-container": "#ffdad6",
+            "secondary": "#835500",
+            "secondary-fixed": "#ffddb4",
+            "surface-bright": "#fcf9f4",
+            "inverse-surface": "#31302d",
+            "on-tertiary-container": "#599578",
+            "error": "#ba1a1a",
+            "surface": "#fcf9f4",
+            "primary-fixed": "#d9e2ff",
+            "tertiary": "#000f07",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#3a4664",
+            "on-secondary-fixed-variant": "#633f00",
+            "on-primary": "#ffffff",
+            "surface-container-low": "#f6f3ee",
+            "surface-tint": "#525e7d",
+            "tertiary-fixed-dim": "#95d4b3",
+            "on-surface": "#1c1c19",
+            "surface-dim": "#dcdad5",
+            "inverse-primary": "#b9c6ea",
+            "on-surface-variant": "#45464d",
+            "on-primary-fixed": "#0d1b36",
+            "surface-container-highest": "#e5e2dd",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#b9c6ea",
+            "on-secondary-fixed": "#291800",
+            "tertiary-container": "#002819",
+            "inverse-on-surface": "#f3f0eb",
+            "outline-variant": "#c5c6ce",
+            "background": "#fcf9f4",
+            "surface-container-high": "#ebe8e3",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#feb956",
+            "on-secondary-container": "#734a00",
+            "primary-container": "#14213d",
+            "on-background": "#1c1c19",
+            "surface-container": "#f0ede9",
+            "tertiary-fixed": "#b1f0ce",
+            "on-tertiary-fixed": "#002114",
+            "on-tertiary-fixed-variant": "#0e5138",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#e5e2dd",
+            "outline": "#75777e",
+            "primary": "#000a24",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter", "sans-serif"],
+            "body-md": ["\"Source Serif 4\"", "serif"],
+            "display-lg-mobile": ["\"Source Serif 4\"", "serif"],
+            "headline-md": ["\"Source Serif 4\"", "serif"],
+            "headline-lg": ["\"Source Serif 4\"", "serif"],
+            "headline-sm": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "display-lg": ["\"Source Serif 4\"", "serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "body-lg": ["\"Source Serif 4\"", "serif"],
+            "label-lg": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "display-lg": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-sm selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<div class="mx-auto w-full max-w-md min-h-screen flex flex-col bg-surface shadow-sm relative">
+<!-- Top App Bar / Greeting Section -->
+<header class="pt-6 pb-2 px-margin border-b border-surface-container-high bg-surface-bright sticky top-0 z-20">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="relative size-10 rounded-full overflow-hidden border border-outline-variant bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A distinguished, scholarly close-up portrait of an intellectual gentleman in a warm sunlit study surrounded by warm wood bookshelves, bathed in natural morning light matching an elegant classical aesthetic with warm sepia and cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0f_4NWVPoFn1oTy5aigiOahc4X8S6CJHYgkWDB63jo0mGAPhnlie-WbtlQwgRf4ZPj1hwlJg9ok5Af_t659F2_fBYRUgx9VGhyV1GHRwHp2OxBH3kmA3z1L6Y010CeE4xFjgfWX7YRhZ-w1waghsVsL8BBkMi-tf_km4MQvyKRYGu6OU8BSZgBnWCYrTWDcghzY6jH2QHdQT5AkERCX4qZ4DMGAS4Q8hYZrCezEg77W7SAg2hTSYb">
+</div>
+<div class="flex flex-col">
+<h1 class="text-on-surface font-headline-sm font-semibold tracking-tight text-base leading-tight">Good morning, Arthur</h1>
+<p class="text-on-surface-variant font-label-md text-xs mt-0.5">Thursday, October 24</p>
+</div>
+</div>
+<!-- Offline Status Badge -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container border border-outline-variant/60" title="Offline synchronization ready">
+<span class="size-2 rounded-full bg-on-tertiary-container ring-2 ring-tertiary-fixed"></span>
+<span class="text-on-surface-variant font-label-sm font-medium">Offline ready</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin py-space-md space-y-space-lg pb-24">
+<!-- Reviews Due Amber Card -->
+<section class="rounded-xl border border-secondary-fixed bg-surface-container-lowest p-4 relative overflow-hidden shadow-[0_2px_8px_rgba(254,185,86,0.12)]">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary-container"></div>
+<div class="flex items-start justify-between gap-3">
+<div class="space-y-1 pl-1">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span class="font-label-md font-semibold tracking-wide uppercase text-[11px]">Spaced Repetition Queue</span>
+</div>
+<p class="text-on-surface font-headline-sm text-sm font-bold leading-snug">
+              14 Insights due for spaced review today
+            </p>
+<p class="text-on-surface-variant font-body-sm text-xs flex items-center gap-1 text-[12px]">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              Estimated time: ~8 mins • Cognitive retention
+            </p>
+</div>
+<button class="flex-shrink-0 min-h-[40px] px-3.5 py-1.5 rounded-lg bg-primary-container text-surface hover:bg-primary transition-colors flex items-center gap-1.5 shadow-sm active:scale-95 text-xs font-semibold">
+<span class="">Start Review</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Large Insight of the Day Card -->
+<article class="rounded-2xl border border-[#EBE5DF] bg-surface-container-lowest p-5 shadow-[0_4px_20px_rgba(28,28,25,0.04)] space-y-4 relative">
+<!-- Card Header / Tags -->
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium">
+<span class="size-1.5 rounded-full bg-secondary"></span>
+<span class="">Philosophy • Stoicism</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button class="size-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" title="Shuffle daily insight">
+<span class="material-symbols-outlined text-[18px]">casino</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-full text-secondary hover:bg-surface-container transition-colors" title="Bookmarked">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Featured Quote -->
+<div class="space-y-2 pt-1">
+<blockquote class="font-headline-md text-on-surface text-[19px] leading-relaxed italic">
+            “You have power over your mind - not outside events. Realize this, and you will find strength.”
+          </blockquote>
+<cite class="block font-label-md not-italic text-outline text-xs tracking-wide">
+            Marcus Aurelius — <span class="text-on-surface-variant font-medium">Meditations, Book IV</span>
+</cite>
+</div>
+<!-- Takeaway Section (Warm subtle parchment background) -->
+<div class="rounded-xl p-3.5 bg-surface-container-low border border-surface-container-high/80">
+<div class="flex items-center gap-1.5 mb-1 text-on-surface font-semibold text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-secondary text-[16px]">lightbulb</span>
+<span class="">Key Takeaway</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">
+            Focus all deliberate agency strictly on your judgments and responses; external disruptions possess no intrinsic power over your inner equilibrium.
+          </p>
+</div>
+<!-- Action Row -->
+<div class="flex items-center justify-between pt-1">
+<button class="flex items-center gap-1 text-outline hover:text-on-surface text-xs font-medium py-1 px-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">share</span>
+<span class="">Reflect</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-high text-on-surface font-semibold text-xs hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">add_task</span>
+<span class="">Create Task</span>
+</button>
+</div>
+</article>
+<!-- Today's Agenda Section -->
+<section class="space-y-3">
+<!-- Agenda Header with Progress Counter and Mini Ring -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<h2 class="text-on-surface font-headline-sm text-base font-semibold">Today's Agenda</h2>
+<span class="text-outline text-xs font-normal">•</span>
+<span class="text-on-surface-variant font-label-md text-xs">3 of 7 completed</span>
+</div>
+<!-- Circular Mini-Progress Indicator (43%) -->
+<div class="relative size-7 flex items-center justify-center">
+<svg class="size-7 -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="43, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute text-[9px] font-bold text-on-surface">43%</span>
+</div>
+</div>
+<!-- Task List Items -->
+<div class="space-y-2">
+<!-- 1. Overdue Task -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest border border-error-container hover:border-error/40 transition-all shadow-xs min-h-[56px] group">
+<div class="flex items-start gap-3 flex-1 min-w-0 pr-2">
+<div class="pt-0.5">
+<input class="size-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer" type="checkbox">
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-body-sm font-medium text-on-surface text-sm leading-snug">Re-read Chapter 3: Epictetus on Freedom</span>
+<span class="size-1.5 rounded-full bg-error" title="High Priority"></span>
+</div>
+<div class="flex items-center gap-2 mt-1 flex-wrap text-xs">
+<span class="inline-flex items-center gap-1 font-semibold text-error bg-error-container/60 px-2 py-0.5 rounded text-[11px]">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                    Overdue • Oct 22
+                  </span>
+<span class="text-outline text-[11px]">30m</span>
+<span class="inline-flex items-center gap-0.5 text-on-surface-variant font-medium text-[11px] bg-surface-container px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[13px]">menu_book</span>
+                    Codex
+                  </span>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-on-surface p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<!-- 2. Scheduled: High Priority -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest border border-surface-container-high hover:border-outline-variant transition-all shadow-xs min-h-[56px]">
+<div class="flex items-start gap-3 flex-1 min-w-0 pr-2">
+<div class="pt-0.5">
+<input class="size-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer" type="checkbox">
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-body-sm font-medium text-on-surface text-sm leading-snug">Draft weekly thesis synthesis note</span>
+<span class="size-1.5 rounded-full bg-error" title="Priority: High (Terracotta Red)"></span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1 text-[11px]">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+                    10:00 AM
+                  </span>
+<span class="text-outline text-[11px]">• Deep Work</span>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-on-surface p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<!-- 3. Scheduled: Spaced Repetition Due -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest border border-surface-container-high hover:border-outline-variant transition-all shadow-xs min-h-[56px]">
+<div class="flex items-start gap-3 flex-1 min-w-0 pr-2">
+<div class="pt-0.5">
+<input class="size-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer" type="checkbox">
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-body-sm font-medium text-on-surface text-sm leading-snug">Review 14 spaced repetition cards</span>
+<span class="size-1.5 rounded-full bg-secondary-fixed-dim" title="Priority: Medium (Amber)"></span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-xs">
+<span class="flex items-center gap-1 text-on-surface-variant text-[11px]">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+                    2:30 PM
+                  </span>
+<span class="inline-flex items-center text-secondary font-medium bg-secondary-fixed/30 px-1.5 py-0.5 rounded text-[11px]">
+                    Due Today
+                  </span>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-on-surface p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<!-- 4. Scheduled: Seneca Letter with Codex Link -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest border border-surface-container-high hover:border-outline-variant transition-all shadow-xs min-h-[56px]">
+<div class="flex items-start gap-3 flex-1 min-w-0 pr-2">
+<div class="pt-0.5">
+<input class="size-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer" type="checkbox">
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-body-sm font-medium text-on-surface text-sm leading-snug">Outline practical application from Seneca Letter 13</span>
+<span class="size-1.5 rounded-full bg-primary-container" title="Priority: Low (Ink Blue)"></span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-xs">
+<span class="flex items-center gap-1 text-on-surface-variant text-[11px]">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+                    5:00 PM
+                  </span>
+<span class="inline-flex items-center gap-0.5 text-on-surface-variant font-medium text-[11px] bg-surface-container px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[13px]">auto_stories</span>
+                    Letters to Lucilius
+                  </span>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-on-surface p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<!-- 5. Completed Task (Morning quiet reading) -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/60 border border-surface-container min-h-[56px] opacity-75">
+<div class="flex items-start gap-3 flex-1 min-w-0 pr-2">
+<div class="pt-0.5">
+<input checked="" class="size-5 rounded border-outline-variant text-on-primary-container focus:ring-0 cursor-pointer" type="checkbox">
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-body-sm text-outline line-through text-sm leading-snug">Morning quiet reading (30 mins)</span>
+<div class="flex items-center gap-2 mt-1 text-xs text-outline">
+<span class="flex items-center gap-1 text-[11px]">
+<span class="material-symbols-outlined text-[13px]">done</span>
+                    Completed 7:15 AM
+                  </span>
+</div>
+</div>
+</div>
+<button class="text-outline/60 hover:text-outline p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (Extended FAB - 48dp touch target standard) -->
+<div class="fixed bottom-20 right-4 z-30 max-w-md mx-auto">
+<button class="h-12 px-5 rounded-full bg-secondary text-on-secondary shadow-lg hover:shadow-xl hover:bg-secondary/90 transition-all active:scale-95 flex items-center gap-2 font-label-lg text-sm font-semibold">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="">Add Task</span>
+</button>
+</div>
+<!-- Sticky Bottom Navigation Bar (Shared Component strictly preserved) -->
+<nav class="sticky bottom-0 left-0 right-0 z-20 bg-surface border-t border-surface-container-high"><div class="flex justify-between items-center px-4 py-2 bg-surface"><a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#"><span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">wb_sunny</span><span class="font-label-md text-xs font-semibold leading-normal">Today</span></a><a class="flex flex-1 flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[24px]">local_library</span><span class="font-label-md text-xs font-medium leading-normal">Library</span></a><a class="flex flex-1 flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[24px]">psychology</span><span class="font-label-md text-xs font-medium leading-normal">Review</span></a><a class="flex flex-1 flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[24px]">check_circle</span><span class="font-label-md text-xs font-medium leading-normal">Tasks</span></a><a class="flex flex-1 flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[24px]">more_horiz</span><span class="font-label-md text-xs font-medium leading-normal">More</span></a></div></nav>
+</div>
+
+
+</body></html>

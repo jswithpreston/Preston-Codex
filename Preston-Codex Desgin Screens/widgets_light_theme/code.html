@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preston Codex - Android Widgets (Light Theme)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            ink: '#14213D',
+            'warm-bg': '#FAF7F2',
+            'paper-card': '#FCF9F4',
+            'paper-elevated': '#FFFFFF',
+            amber: '#E09F3E',
+            'amber-subtle': '#FDF5E8',
+            forest: '#2D6A4F',
+            terracotta: '#B83A24',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#ECE7DF] text-[#14213D] font-sans p-4 sm:p-5 antialiased selection:bg-[#E09F3E]/20">
+  <div class="max-w-md mx-auto space-y-5">
+    
+    <!-- Widget Sheet Header -->
+    <header class="flex items-center justify-between px-1">
+      <div>
+        <div class="flex items-center gap-1.5 text-xs font-semibold tracking-wider text-[#736B5E] uppercase">
+          <svg class="w-3.5 h-3.5 text-[#E09F3E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          Preston Codex · Android Widgets
+        </div>
+        <h1 class="text-xl font-bold tracking-tight text-[#14213D] mt-0.5">Warm Paper (Light)</h1>
+      </div>
+      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#E09F3E]/15 text-[#8F5E12] border border-[#E09F3E]/30">
+        Material 3 Specs
+      </span>
+    </header>
+
+    <!-- SECTION 1: 2x2 Small Widget & 2x2 Empty State -->
+    
+
+    <!-- SECTION 2: 4x2 Medium Widget -->
+    
+
+    <!-- SECTION 3: 4x4 Large Widget -->
+    <div>
+      <div class="flex items-center justify-between mb-2 px-1">
+        <h2 class="text-xs font-semibold tracking-wide text-[#736B5E] uppercase">Large (4×4 Grid)</h2>
+        <span class="text-[11px] text-[#8C8375]">336 × 336 dp</span>
+      </div>
+      
+      <article class="bg-[#FCF9F4] rounded-[28px] p-4.5 border border-[#E5E0D6] shadow-sm flex flex-col justify-between relative transition-transform active:scale-[0.99]"><div class=""><div class="flex items-center justify-between"><span class="text-[9px] font-bold tracking-widest text-[#9C7026] uppercase bg-[#E09F3E]/15 px-2.5 py-1 rounded-full border border-[#E09F3E]/30 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-[#E09F3E]" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.88-7.903A5 5 0 1112.88 14z"></path></svg>Insight of the Day</span><span class="text-[11px] font-semibold text-[#736B5E]">Thu, Oct 22, 2026</span></div><div class="mt-3 pl-3 border-l-2 border-[#E09F3E]"><p class="font-serif italic text-[15px] leading-snug text-[#14213D]">“You do not rise to the level of your goals. You fall to the level of your systems.”</p><p class="text-[11px] text-[#736B5E] mt-1.5">— <span class="font-semibold text-[#14213D]">James Clear</span>, <span class="italic">Atomic Habits</span></p></div><div class="border-t border-[#EFEBE4] my-3"></div><div class="bg-[#FAF5EC] rounded-xl p-3 border border-[#EDE4D5]"><div class="flex items-center gap-1.5 text-[9px] font-bold text-[#8A5A14] uppercase tracking-wider"><svg class="w-3 h-3 text-[#E09F3E]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"></path></svg>Takeaway</div><p class="text-[12px] leading-snug text-[#453D32] mt-1">Focus on daily habit design rather than fixing lofty targets alone.</p></div><div class="border-t border-[#EFEBE4] my-3"></div><div class="space-y-2"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-[#E09F3E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg><span class="text-[9px] font-bold tracking-widest text-[#9C7026] uppercase">Tasks of the Day</span></div><div class="flex items-center gap-1.5"><span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-[#E09F3E]/15 text-[#8F5E12] border border-[#E09F3E]/30">3 of 5 done</span><button class="text-[10px] font-semibold text-[#8A5A14] hover:underline inline-flex items-center gap-0.5">Open Tasks<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button></div></div><div class="space-y-1.5 pt-0.5"><div class="flex items-center justify-between p-2 rounded-xl bg-[#FAF5EC]/70 border border-[#EDE4D5]"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full bg-[#14213D] flex items-center justify-center text-[#FAF7F2]"><svg class="w-2.5 h-2.5 stroke-current stroke-2" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div><span class="text-[11px] text-[#736B5E] line-through">Morning quiet reading (30 mins)</span></div><span class="text-[9px] font-medium text-[#736B5E] bg-[#F1ECE2] px-1.5 py-0.5 rounded">Done</span></div><div class="flex items-center justify-between p-2 rounded-xl bg-[#FAF5EC]/70 border border-[#EDE4D5]"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border border-[#D9D3C7] bg-[#FCF9F4]"></div><span class="text-[11px] font-medium text-[#14213D]">Re-read Chapter 3: Epictetus on Freedom</span></div><span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-700">Overdue</span></div><div class="flex items-center justify-between p-2 rounded-xl bg-[#FAF5EC]/70 border border-[#EDE4D5]"><div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border border-[#D9D3C7] bg-[#FCF9F4]"></div><span class="text-[11px] font-medium text-[#14213D]">Draft weekly thesis synthesis note</span></div><span class="text-[9px] font-medium text-[#736B5E] bg-[#F1ECE2] px-1.5 py-0.5 rounded">10:00 AM</span></div></div></div></div><div class="pt-2.5 border-t border-[#EFEBE4]"><div class="grid grid-cols-2 gap-2.5"><button class="w-full py-2 rounded-full bg-[#F1ECE2] text-[#14213D] text-[11px] font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:bg-[#EFEAE0] transition-colors"><svg class="w-3.5 h-3.5 text-[#736B5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>Shuffle</button><button class="w-full py-2 rounded-full bg-[#14213D] text-[#FAF7F2] text-[11px] font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:bg-[#1E2E50] transition-colors"><svg class="w-3.5 h-3.5 text-[#E09F3E] fill-current" viewBox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>Bookmark</button></div></div></article>
+    </div>
+
+  </div>
+
+
+
+
+</body></html>

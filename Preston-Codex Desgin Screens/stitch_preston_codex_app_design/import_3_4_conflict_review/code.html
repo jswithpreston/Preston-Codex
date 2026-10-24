@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conflict Review - Preston Codex</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Serif+4:wght@100..900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface-variant": "#45464d",
+            "on-secondary-fixed-variant": "#633f00",
+            "inverse-primary": "#b9c6ea",
+            "on-background": "#1c1c19",
+            "on-primary-container": "#7c89aa",
+            "on-surface": "#1c1c19",
+            "tertiary": "#000f07",
+            "primary-container": "#14213d",
+            "primary-fixed": "#d9e2ff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#3a4664",
+            "on-secondary-container": "#734a00",
+            "inverse-on-surface": "#f3f0eb",
+            "surface-container-high": "#ebe8e3",
+            "secondary": "#835500",
+            "on-primary": "#ffffff",
+            "surface-container": "#f0ede9",
+            "surface-bright": "#fcf9f4",
+            "surface-variant": "#e5e2dd",
+            "tertiary-fixed": "#b1f0ce",
+            "secondary-container": "#feb956",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#95d4b3",
+            "outline": "#75777e",
+            "error": "#ba1a1a",
+            "primary": "#000a24",
+            "on-tertiary-fixed-variant": "#0e5138",
+            "secondary-fixed": "#ffddb4",
+            "on-tertiary-container": "#599578",
+            "on-tertiary-fixed": "#002114",
+            "inverse-surface": "#31302d",
+            "tertiary-container": "#002819",
+            "outline-variant": "#c5c6ce",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "surface-tint": "#525e7d",
+            "surface-container-highest": "#e5e2dd",
+            "surface-dim": "#dcdad5",
+            "on-error-container": "#93000a",
+            "background": "#fcf9f4",
+            "on-primary-fixed": "#0d1b36",
+            "on-secondary-fixed": "#291800",
+            "primary-fixed-dim": "#b9c6ea",
+            "surface": "#fcf9f4",
+            "secondary-fixed-dim": "#feb956",
+            "surface-container-low": "#f6f3ee"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline-md": ["\"Source Serif 4\""],
+            "label-sm": ["Inter"],
+            "display-lg": ["\"Source Serif 4\""],
+            "body-lg": ["\"Source Serif 4\""],
+            "label-lg": ["Inter"],
+            "headline-lg": ["\"Source Serif 4\""],
+            "body-md": ["\"Source Serif 4\""],
+            "headline-sm": ["Inter"],
+            "display-lg-mobile": ["\"Source Serif 4\""],
+            "body-sm": ["Inter"],
+            "label-md": ["Inter"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary-fixed">
+<!-- Mobile Stack Shell Container -->
+<div class="w-full max-w-md min-h-screen bg-surface flex flex-col relative border-x border-outline-variant shadow-sm pb-24">
+<!-- Immutable Shared Component: TopAppBar with strict integrity -->
+<div class="relative flex h-auto w-full flex-col bg-gray-50 group/design-root overflow-x-hidden" style='font-family: "Be Vietnam Pro", "Noto Sans", sans-serif;'>
+<div class="flex items-center bg-gray-50 p-4 pb-2 justify-between">
+<div class="text-[#101318] flex size-12 shrink-0 items-center" data-icon="Coffee" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"></path>
+</svg>
+</div>
+<h2 class="text-[#101318] text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Conflict Review</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#101318] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<div class="text-[#101318]" data-icon="X" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+</svg>
+</div>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between"><p class="text-[#101318] text-base font-medium leading-normal">Step 3 of 4 • Resolve Conflicts</p></div>
+<div class="rounded bg-[#d4d9e2]"><div class="h-2 rounded bg-[#14213d]" style="width: 75%;"></div></div>
+<p class="text-[#5c6a8a] text-sm font-normal leading-normal">Conflict 1 of 2</p>
+</div>
+<h3 class="text-[#101318] tracking-light text-2xl font-bold leading-tight px-4 text-left pb-2 pt-5">Conflict in Meditations, Book IV</h3>
+<p class="text-[#5c6a8a] text-sm font-normal leading-normal pb-3 pt-1 px-4">Entry #14 in meditations_vault_oct.md</p>
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A refined classical library setting with warm morning light filtering across dark oak study tables, antique leatherbound stoic manuscripts, and handwritten scholarly notes in an orderly composition. Visual aesthetic features deep archival tones, soft warm ivory pages, subtle ambient shadows, and a serene intellectual ambiance." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhE3-LTCrXCTRVTmoAYFTaMC2JcpZmz-ZJaG7V2qWTrgxrSPHmGHb8PXGXl-Igh15titeEYabQjvmgGICoMVwAN5r8xv3adpVbKzcNDXMR8wTnx2PQ6P3N69zBvQIpQ02FaaT9B2xy-K3iEIorP7D2AV_weQL7dvyeXS1oYAf4gpIc_0Wrgpm17UMTGFNky2cWSxXXsFVjuMbqMmypicwrY5a611Dbq2PWe4PUD7y_jqBou36KzsaI");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-4 @xl:px-4">
+<p class="text-[#5c6a8a] text-sm font-normal leading-normal">EXISTING IN CODEX (CURRENT)</p>
+<p class="text-[#101318] text-lg font-bold leading-tight tracking-[-0.015em]">Meditations, Book IV • Added Aug 14, 2024</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-[#5c6a8a] text-base font-normal leading-normal">“Waste no more time arguing what a good man should be. Be one.”</p>
+<p class="text-[#5c6a8a] text-base font-normal leading-normal">
+                  Takeaway: Daily ethical action over theoretical debates. | Tags: #stoicism #character #ethics | Spaced Review: Lvl 4 (Interval: 24d)
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="h-5 bg-gray-50"></div>
+</div>
+<!-- End Immutable Shared TopAppBar Component -->
+<!-- Interactive Comparison & Diff Section -->
+<main class="px-4 flex flex-col gap-5 pt-2">
+<!-- Section Explainer Banner -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl border border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary text-xl">difference</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+          Compare differences below. Green tags denote incoming additions; amber badges highlight replaced text.
+        </p>
+</div>
+<!-- Comparative Diff View Container -->
+<div class="space-y-4">
+<!-- Block 1: Existing Version (Codex Current) -->
+<div class="rounded-xl border border-outline-variant bg-surface-container-lowest p-4 relative shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-surface-variant mb-3">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-label-sm text-label-sm uppercase font-semibold text-on-surface-variant tracking-wider">Codex Version (Current)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Lvl 4 (24d)</span>
+</div>
+<div class="space-y-3 font-body-md">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Source & Attribution</p>
+<p class="font-headline-sm text-sm font-medium text-on-surface">Meditations, Book IV <span class="text-on-surface-variant font-normal">• Recorded Aug 14, 2024</span></p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Quote</p>
+<blockquote class="font-headline-md text-base italic text-on-surface border-l-2 border-outline-variant pl-3 py-0.5">
+                “Waste no more time arguing what a good man should be. Be one.”
+              </blockquote>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Synthesis / Takeaway</p>
+<p class="font-body-md text-sm text-on-surface bg-surface-container-low p-2.5 rounded-lg border border-surface-variant">
+                Daily ethical action over theoretical debates.
+              </p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1.5">Taxonomy Tags</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">#stoicism</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">#character</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">#ethics</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Block 2: Incoming Markdown File Version (Diffed) -->
+<div class="rounded-xl border-2 border-secondary/40 bg-surface-container-lowest p-4 relative shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-surface-variant mb-3">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase font-semibold text-secondary tracking-wider">Incoming from Markdown File</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-secondary-container bg-secondary-fixed/50 px-2 py-0.5 rounded font-medium">3 Differences</span>
+</div>
+<div class="space-y-3 font-body-md">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Source & Attribution</p>
+<p class="font-headline-sm text-sm font-medium text-on-surface">
+                Meditations, Book IV <span class="text-secondary font-medium bg-secondary-fixed/40 px-1 rounded">(Translation: Hays)</span>
+</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Quote Diff</p>
+<blockquote class="font-headline-md text-base italic text-on-surface border-l-2 border-secondary pl-3 py-0.5">
+                “Waste no more time arguing <mark class="bg-secondary-fixed text-on-secondary-fixed font-semibold px-1 rounded not-italic">about</mark> what a good man should be. Be one.”
+              </blockquote>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Updated Takeaway</p>
+<p class="font-body-md text-sm text-on-surface bg-secondary-fixed/20 p-2.5 rounded-lg border border-secondary/30">
+<span class="bg-secondary-fixed/50 font-medium px-1 rounded">Focus strictly on personal integrity through immediate physical deeds.</span>
+</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1.5">Incoming Tags</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">#stoicism</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-medium ring-1 ring-tertiary-fixed-dim">+ #virtue</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-medium ring-1 ring-tertiary-fixed-dim">+ #action</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Decision Section: 4 Clear Choices -->
+<div class="pt-2">
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-3 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">rule</span>
+          Choose Resolution Strategy
+        </h4>
+<div class="grid grid-cols-1 gap-2.5">
+<!-- 1. Keep Existing -->
+<button class="w-full text-left p-3.5 rounded-xl border border-outline-variant hover:border-primary-container bg-surface-container-low transition-all flex items-start justify-between group active:scale-[0.99]">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5 group-hover:text-primary">history</span>
+<div>
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">Keep existing</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Retain current database entry and discard markdown changes.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg group-hover:text-primary">radio_button_unchecked</span>
+</button>
+<!-- 2. Apply Selected Changes (Primary action) -->
+<button class="w-full text-left p-3.5 rounded-xl border-2 border-primary-container bg-primary-fixed/20 transition-all flex items-start justify-between group active:scale-[0.99] shadow-sm">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary-container mt-0.5">published_with_changes</span>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-label-lg text-label-lg font-semibold text-primary">Apply selected changes</p>
+<span class="font-label-sm text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-primary-container text-white">Recommended</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Overwrite text with incoming version, keeping review interval.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+</button>
+<!-- 3. Save as Separate Entry -->
+<button class="w-full text-left p-3.5 rounded-xl border border-outline-variant hover:border-primary-container bg-surface-container-low transition-all flex items-start justify-between group active:scale-[0.99]">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5 group-hover:text-primary">library_add</span>
+<div>
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">Save as separate entry</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Create entry #14b side-by-side as an alternate translation.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg group-hover:text-primary">radio_button_unchecked</span>
+</button>
+<!-- 4. Skip -->
+<button class="w-full text-left p-3.5 rounded-xl border border-outline-variant/60 hover:border-outline bg-transparent transition-all flex items-start justify-between group active:scale-[0.99]">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">redo</span>
+<div>
+<p class="font-label-lg text-label-lg font-medium text-on-surface-variant">Skip for now</p>
+<p class="font-body-sm text-body-sm text-outline">Decide later; omit this item from current import execution.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-lg">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Persistent Action Footer -->
+<div class="fixed bottom-0 max-w-md w-full bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant px-4 py-3 flex items-center justify-between z-30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Resolution Progress</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">1 remaining</span>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-label-lg text-label-lg shadow-sm hover:bg-primary-container active:scale-95 transition-all">
+<span>Next Conflict</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

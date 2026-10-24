@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="mobile_tab" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#000a24",
+            "on-surface-variant": "#45464d",
+            "surface-container-high": "#ebe8e3",
+            "inverse-surface": "#31302d",
+            "on-secondary-fixed": "#291800",
+            "surface-container-low": "#f6f3ee",
+            "on-tertiary-fixed": "#002114",
+            "tertiary-fixed-dim": "#95d4b3",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#f3f0eb",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed-variant": "#0e5138",
+            "primary-container": "#14213d",
+            "primary-fixed": "#d9e2ff",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#b9c6ea",
+            "secondary-fixed-dim": "#feb956",
+            "surface-tint": "#525e7d",
+            "surface-container-highest": "#e5e2dd",
+            "on-secondary-container": "#734a00",
+            "tertiary": "#000f07",
+            "on-background": "#1c1c19",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#b9c6ea",
+            "on-primary-fixed": "#0d1b36",
+            "tertiary-container": "#002819",
+            "tertiary-fixed": "#b1f0ce",
+            "on-error": "#ffffff",
+            "secondary": "#835500",
+            "on-secondary-fixed-variant": "#633f00",
+            "outline": "#75777e",
+            "outline-variant": "#c5c6ce",
+            "error-container": "#ffdad6",
+            "on-surface": "#1c1c19",
+            "secondary-fixed": "#ffddb4",
+            "on-primary-fixed-variant": "#3a4664",
+            "surface-container": "#f0ede9",
+            "surface-dim": "#dcdad5",
+            "on-primary-container": "#7c89aa",
+            "surface": "#fcf9f4",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#feb956",
+            "on-tertiary-container": "#599578",
+            "surface-bright": "#fcf9f4",
+            "background": "#fcf9f4",
+            "surface-variant": "#e5e2dd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["\"Source Serif 4\""],
+            "body-lg": ["\"Source Serif 4\""],
+            "body-sm": ["Inter"],
+            "display-lg-mobile": ["\"Source Serif 4\""],
+            "label-md": ["Inter"],
+            "headline-md": ["\"Source Serif 4\""],
+            "body-md": ["\"Source Serif 4\""],
+            "display-lg": ["\"Source Serif 4\""],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+        min-height: max(884px, 100dvh);
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen">
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(20,33,61,0.04)]">
+<div class="h-6 px-margin-mobile flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm select-none">
+<span class="font-label-md text-label-md font-semibold text-on-surface">9:41</span>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] tracking-tight font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>Offline ready
+        </span>
+<span class="material-symbols-outlined text-[15px]">wifi</span>
+<span class="material-symbols-outlined text-[15px]">battery_full</span>
+</div>
+</div>
+<div class="h-14 px-margin-mobile flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<h1 class="font-headline-md text-headline-md font-medium text-on-surface truncate">Tasks</h1>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button aria-label="Search Archive" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</button>
+<button aria-label="User Profile" class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-on-primary ring-2 ring-surface-container-high hover:opacity-90 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex flex-col relative w-full pt-20 pb-[80px] bg-surface min-h-screen">
+<div class="flex flex-col w-full px-margin-mobile pb-space-xl">
+<!-- View Controls Header -->
+<div class="flex flex-col gap-space-sm pt-space-xs mb-space-md">
+<!-- Day / Week Segmented Switch -->
+<div class="flex items-center justify-between">
+<div class="inline-flex p-1 bg-surface-container rounded-full shadow-sm" role="tablist">
+<button aria-selected="true" class="px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-medium transition-all shadow-sm" id="tab-day" role="tab">
+          Day View
+        </button>
+<button aria-selected="false" class="px-space-md py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all" id="tab-week" role="tab">
+          Week
+        </button>
+</div>
+<!-- Quick Date Jump Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">October 2024</span>
+</div>
+</div>
+<!-- Date Strip Picker (Mon 21 - Sun 27) -->
+<div class="flex items-center justify-between gap-1 overflow-x-auto py-1.5">
+<!-- Mon 21 -->
+<button class="flex flex-col items-center justify-center min-w-[44px] py-2 px-1 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mon</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">21</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container mt-1"></span>
+</button>
+<!-- Tue 22 -->
+<button class="flex flex-col items-center justify-center min-w-[44px] py-2 px-1 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tue</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">22</span>
+<span class="w-1.5 h-1.5 rounded-full bg-error mt-1"></span>
+</button>
+<!-- Wed 23 -->
+<button class="flex flex-col items-center justify-center min-w-[44px] py-2 px-1 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Wed</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">23</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container mt-1"></span>
+</button>
+<!-- Thu 24 (Active) -->
+<button class="flex flex-col items-center justify-center min-w-[48px] py-2 px-1 rounded-xl bg-primary-container text-on-primary shadow-sm relative">
+<span class="font-label-sm text-label-sm text-primary-fixed">Thu</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-primary mt-0.5">24</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container mt-1"></span>
+</button>
+<!-- Fri 25 -->
+<button class="flex flex-col items-center justify-center min-w-[44px] py-2 px-1 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fri</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">25</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest mt-1"></span>
+</button>
+<!-- Sat 26 -->
+<button class="flex flex-col items-center justify-center min-w-[44px] py-2 px-1 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sat</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">26</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest mt-1"></span>
+</button>
+<!-- Sun 27 -->
+<button class="flex flex-col items-center justify-center min-w-[44px] py-2 px-1 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sun</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">27</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest mt-1"></span>
+</button>
+</div>
+<!-- Week Overview Stats Tile -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-label-sm text-label-sm font-semibold text-on-surface">75%</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Weekly Codex Discipline</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">18 of 24 completed • 6 pending</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="font-label-sm text-label-sm font-medium">+12%</span>
+</div>
+</div>
+</div>
+<!-- Task Sections Wrapper -->
+<div class="flex flex-col gap-space-lg">
+<!-- 1. Overdue Section -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-error">warning</span>
+<h2 class="font-headline-sm text-headline-sm text-error">Overdue</h2>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">1</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Requires attention</span>
+</div>
+<!-- Overdue Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex items-start gap-space-sm">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px] text-transparent transition-colors">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<span class="font-body-md text-body-md text-on-surface font-medium leading-snug">Re-read Chapter 3: Epictetus on Freedom</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] flex-shrink-0">more_vert</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">event_busy</span>
+              Overdue Oct 22
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+              30m
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">menu_book</span>
+              Codex IV: Discourses
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Scheduled Today Section -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">today</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Scheduled Today</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">4</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Thursday, Oct 24</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Task Item 1: Thesis note -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex items-start gap-space-sm">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px] text-transparent transition-colors">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="task-title font-body-md text-body-md text-on-surface font-medium leading-snug">Draft weekly thesis synthesis note</span>
+<span class="w-2 h-2 rounded-full bg-secondary flex-shrink-0" title="High Priority"></span>
+</div>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+                10:00 AM
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+                Deep Work
+              </span>
+</div>
+</div>
+</div>
+<!-- Task Item 2: Spaced Repetition -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex items-start gap-space-sm">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px] text-transparent transition-colors">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="task-title font-body-md text-body-md text-on-surface font-medium leading-snug">Review 14 spaced repetition cards</span>
+<span class="w-2 h-2 rounded-full bg-secondary flex-shrink-0" title="High Priority"></span>
+</div>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+                2:30 PM
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">psychology</span>
+                Review Due
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+                14 cards
+              </span>
+</div>
+</div>
+</div>
+<!-- Task Item 3: Seneca Letter 13 -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex items-start gap-space-sm">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px] text-transparent transition-colors">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<span class="task-title font-body-md text-body-md text-on-surface font-medium leading-snug">Outline practical application from Seneca Letter 13</span>
+<span class="material-symbols-outlined text-secondary text-[18px] flex-shrink-0" title="Linked to Seneca Insight">bookmark_added</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+                5:00 PM
+              </span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">link</span>
+                Seneca on Groundless Fears
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Unscheduled / Backlog Section -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">inbox</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Unscheduled / Backlog</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">2</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-medium">Prioritize</button>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Backlog 1 -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex items-start gap-space-sm">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px] text-transparent transition-colors">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="task-title font-body-md text-body-md text-on-surface font-medium leading-snug">Curate excerpts from Marcus Aurelius Book IV</span>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">auto_stories</span>
+                Knowledge capture
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                No time set
+              </span>
+</div>
+</div>
+</div>
+<!-- Backlog 2 -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex items-start gap-space-sm">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px] text-transparent transition-colors">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="task-title font-body-md text-body-md text-on-surface font-medium leading-snug">Archive completed study notes from September</span>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">archive</span>
+                Filing
+              </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Completed Collapsed Section -->
+<section class="flex flex-col gap-space-sm">
+<button class="flex items-center justify-between w-full py-1 px-1 text-left focus:outline-none" id="toggle-completed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">check_circle</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Completed</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">1</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="completed-chevron">expand_more</span>
+</button>
+<div class="flex flex-col gap-2.5 transition-all duration-300" id="completed-content">
+<!-- Completed Task 1 -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-md shadow-sm flex items-start gap-space-sm opacity-80">
+<button aria-label="Toggle task completion" class="task-checkbox mt-0.5 w-[22px] h-[22px] rounded-[6px] bg-tertiary-container text-on-tertiary flex items-center justify-center flex-shrink-0 transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="task-title font-body-md text-body-md text-on-surface-variant line-through leading-snug">Morning quiet reading (30 mins)</span>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">done</span>
+                Completed 7:45 AM
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                Habit
+              </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Scholar Quote Accent Banner / Touch of Delight -->
+<div class="mt-space-xl p-space-md rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0 mt-0.5">format_quote</span>
+<div class="flex flex-col">
+<p class="font-body-sm text-body-sm italic text-on-surface">"First say to yourself what you would be; and then do what you have to do."</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 font-medium">— Epictetus, Discourses</span>
+</div>
+</div>
+<!-- Floating Amber Action Button (Anchored within content zone) -->
+<div class="sticky bottom-4 self-end z-20 mt-space-lg">
+<button class="flex items-center gap-2 px-space-lg py-3 rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg font-semibold shadow-xl active:scale-95 transition-all" id="btn-new-task">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>New Task</span>
+</button>
+</div>
+</div>
+<script>
+  // Simple micro-interactions for checkboxes and collapse
+  document.querySelectorAll('.task-checkbox').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const checkIcon = btn.querySelector('.material-symbols-outlined');
+      const taskContainer = btn.closest('div.w-full');
+      const title = taskContainer.querySelector('.task-title');
+      
+      const isChecked = btn.classList.contains('bg-tertiary-container');
+      
+      if (isChecked) {
+        btn.classList.remove('bg-tertiary-container', 'text-on-tertiary');
+        btn.classList.add('bg-surface-container-high');
+        if (checkIcon) checkIcon.classList.add('text-transparent');
+        if (title) {
+          title.classList.remove('line-through', 'text-on-surface-variant');
+          title.classList.add('text-on-surface');
+        }
+      } else {
+        btn.classList.remove('bg-surface-container-high');
+        btn.classList.add('bg-tertiary-container', 'text-on-tertiary');
+        if (checkIcon) checkIcon.classList.remove('text-transparent');
+        if (title) {
+          title.classList.add('line-through', 'text-on-surface-variant');
+          title.classList.remove('text-on-surface');
+        }
+      }
+    });
+  });
+
+  // Toggle Completed tasks section
+  const toggleBtn = document.getElementById('toggle-completed');
+  const completedContent = document.getElementById('completed-content');
+  const chevron = document.getElementById('completed-chevron');
+
+  if (toggleBtn && completedContent && chevron) {
+    toggleBtn.addEventListener('click', () => {
+      const isHidden = completedContent.classList.contains('hidden');
+      if (isHidden) {
+        completedContent.classList.remove('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      } else {
+        completedContent.classList.add('hidden');
+        chevron.style.transform = 'rotate(-90deg)';
+      }
+    });
+  }
+
+  // Segmented toggle Day / Week interaction
+  const dayTab = document.getElementById('tab-day');
+  const weekTab = document.getElementById('tab-week');
+
+  if (dayTab && weekTab) {
+    dayTab.addEventListener('click', () => {
+      dayTab.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      dayTab.classList.remove('text-on-surface-variant');
+      weekTab.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+      weekTab.classList.add('text-on-surface-variant');
+    });
+
+    weekTab.addEventListener('click', () => {
+      weekTab.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      weekTab.classList.remove('text-on-surface-variant');
+      dayTab.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+      dayTab.classList.add('text-on-surface-variant');
+    });
+  }
+</script>
+</main>
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-2px_12px_rgba(20,33,61,0.04)]" data-active-classes="text-primary font-semibold [&amp;&gt;.nav-indicator]:bg-surface-container-highest [&amp;&gt;.nav-indicator]:text-primary">
+<div class="flex justify-around items-center h-20 px-space-xs">
+<a class="flex flex-col items-center justify-center gap-1 w-16 h-full text-on-surface-variant group" data-path="today" href="#">
+<div class="nav-indicator w-14 h-8 rounded-full flex items-center justify-center transition-all duration-200 group-hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[22px]">light_mode</span>
+</div>
+<span class="font-label-sm text-label-sm tracking-tight">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-16 h-full text-on-surface-variant group" data-path="library" href="#">
+<div class="nav-indicator w-14 h-8 rounded-full flex items-center justify-center transition-all duration-200 group-hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[22px]">auto_stories</span>
+</div>
+<span class="font-label-sm text-label-sm tracking-tight">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-16 h-full text-on-surface-variant group" data-path="review" href="#">
+<div class="nav-indicator w-14 h-8 rounded-full flex items-center justify-center transition-all duration-200 group-hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[22px]">psychology</span>
+</div>
+<span class="font-label-sm text-label-sm tracking-tight">Review</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-16 h-full group text-primary font-semibold [&amp;&gt;.nav-indicator]:bg-surface-container-highest [&amp;&gt;.nav-indicator]:text-primary" data-path="tasks" href="#">
+<div class="nav-indicator w-14 h-8 rounded-full flex items-center justify-center transition-all duration-200 group-hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[22px]">checklist</span>
+</div>
+<span class="font-label-sm text-label-sm tracking-tight">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-16 h-full text-on-surface-variant group" data-path="more" href="#">
+<div class="nav-indicator w-14 h-8 rounded-full flex items-center justify-center transition-all duration-200 group-hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+</div>
+<span class="font-label-sm text-label-sm tracking-tight">More</span>
+</a>
+</div>
+</nav>
+</body></html>
