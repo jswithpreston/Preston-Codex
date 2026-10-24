@@ -1,0 +1,24 @@
+# Android
+*.iml
+.gradle/
+build/
+local.properties
+*.keystore
+!debug.keystore
+
+# IntelliJ / Android Studio
+.idea/
+*.class
+*.log
+out/
+gen/
+
+# Gradle wrapper (keep the jar and scripts, ignore caches)
+.gradle
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CI artifacts
+app/release/
