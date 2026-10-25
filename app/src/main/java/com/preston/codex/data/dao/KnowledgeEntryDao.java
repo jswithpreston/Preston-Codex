@@ -33,6 +33,24 @@ public interface KnowledgeEntryDao {
     @Query("SELECT * FROM knowledge_entry")
     List<KnowledgeEntryEntity> getAllEntries();
 
+    @Query("UPDATE knowledge_entry SET is_bookmarked = :isBookmarked WHERE id = :id")
+    void updateBookmark(long id, boolean isBookmarked);
+
+    @Query("SELECT id FROM knowledge_entry WHERE is_bookmarked = 1 AND is_archived = 0 AND is_trashed = 0")
+    List<Long> findBookmarkedEntryIds();
+
+    @Query("SELECT id FROM knowledge_entry WHERE is_archived = 0 AND is_trashed = 0 ORDER BY id ASC")
+    List<Long> findEligibleEntryIds();
+
+    @Query("SELECT COUNT(*) > 0 FROM knowledge_entry WHERE id = :id")
+    boolean existsById(long id);
+
+    @Query("SELECT COUNT(*) > 0 FROM knowledge_entry WHERE id = :id AND is_archived = 0 AND is_trashed = 0")
+    boolean isEligibleById(long id);
+
+    @Query("DELETE FROM knowledge_entry WHERE id = :id")
+    void deleteById(long id);
+
     @Query("SELECT COUNT(*) FROM knowledge_entry")
     int count();
 }

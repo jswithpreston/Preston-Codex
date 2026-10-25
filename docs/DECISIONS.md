@@ -51,14 +51,14 @@ Unknown fields are reported in the import preview.
 
 ## Decision 5 — Spaced Repetition
 
-Algorithm: deterministic, interval-ladder based.
+Algorithm: deterministic, interval-ladder based (zero-based indexing).
 
 | Rating | Interval effect |
 |---|---|
-| Forgot | Reset to step 0; next interval = 1 day |
-| Difficult | Repeat at max(1, step − 1) ladder position |
-| Remembered | Advance 1 step |
-| Easy | Advance 2 steps |
+| Forgot | Reset to step 0; next interval = ladder[0] (1 day) |
+| Difficult | Repeat at max(0, step − 1) ladder position |
+| Remembered | Advance 1 step: min(lastStep, step + 1) |
+| Easy | Advance 2 steps: min(lastStep, step + 2) |
 
 Default ladder (days): **1, 3, 7, 14, 30, 60, 120** — configurable.
 Default daily review limit: **20** — configurable.

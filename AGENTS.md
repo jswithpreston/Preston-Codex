@@ -65,8 +65,9 @@ spec conflict, stop and ask me. Never silently reinterpret requirements.
    day's selection and appends to a selection-history table. The app and widget
    read the same row. No consecutive-day repeats when >= 2 eligible entries.
 5. Spaced repetition: deterministic, interval-ladder based.
-   Forgot -> 1 day, reset step to 0. Difficult -> repeat at max(1, step-1)
-   ladder position. Remembered -> advance 1 step. Easy -> advance 2 steps.
+   Forgot -> 1 day, reset step to 0. Difficult -> repeat at max(0, step-1)
+   ladder position. Remembered -> advance 1 step (clamped to last step).
+   Easy -> advance 2 steps (clamped to last step).
    Default ladder (days): 1, 3, 7, 14, 30, 60, 120. Configurable daily
    review limit (default 20). Overdue items sorted by days overdue, then
    lowest step. Full review history kept; changing the ladder never rewrites

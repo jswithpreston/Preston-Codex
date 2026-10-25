@@ -8,11 +8,15 @@ junit           = "4.13.2"
 mockito         = "5.14.2"
 robolectric     = "4.13"
 gson            = "2.12.1"
+androidx-test-core = "1.6.1"
+androidx-test-junit = "1.2.1"
 
 [libraries]
 room-runtime        = { module = "androidx.room:room-runtime",          version.ref = "room" }
 room-compiler       = { module = "androidx.room:room-compiler",         version.ref = "room" }
 room-testing        = { module = "androidx.room:room-testing",          version.ref = "room" }
+androidx-test-core  = { module = "androidx.test:core",                  version.ref = "androidx-test-core" }
+androidx-test-junit = { module = "androidx.test.ext:junit",             version.ref = "androidx-test-junit" }
 workmanager         = { module = "androidx.work:work-runtime",          version.ref = "workmanager" }
 material            = { module = "com.google.android.material:material", version.ref = "material" }
 desugar-jdk-libs    = { module = "com.android.tools:desugar_jdk_libs",  version.ref = "desugar" }

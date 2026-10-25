@@ -20,6 +20,11 @@ android {
         }
     }
 
+    sourceSets {
+        test.assets.srcDirs += files("$projectDir/schemas")
+        main.assets.srcDirs += files("$projectDir/schemas")
+    }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -50,4 +55,6 @@ dependencies {
     testImplementation libs.mockito.core
     testImplementation libs.robolectric
     testImplementation libs.room.testing
+    testImplementation libs.androidx.test.core
+    testImplementation libs.androidx.test.junit
 }
