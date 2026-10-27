@@ -55,4 +55,33 @@ public class ArchitectureRulesTest {
             }
         }
     }
+
+    @Test
+    public void ARCH02_integration_hasNoDataEntityOrDaoImports() throws IOException {
+        File projectDir = new File("src/main/java/com/preston/codex");
+        if (!projectDir.exists()) {
+            projectDir = new File("app/src/main/java/com/preston/codex");
+        }
+        File integrationDir = new File(projectDir, "integration");
+        assertTrue("Integration dir exists: " + integrationDir.getAbsolutePath(), integrationDir.exists());
+
+        List<Path> filesToCheck = new ArrayList<>();
+        try (Stream<Path> stream = Files.walk(integrationDir.toPath())) {
+            stream.filter(p -> p.toString().endsWith(".java")).forEach(filesToCheck::add);
+        }
+        assertTrue("Found Java files to check in integration", !filesToCheck.isEmpty());
+
+        for (Path file : filesToCheck) {
+            List<String> lines = Files.readAllLines(file);
+            for (int i = 0; i < lines.size(); i++) {
+                String line = lines.get(i).trim();
+                if (line.startsWith("import com.preston.codex.data.entity.")) {
+                    throw new AssertionError("Forbidden data.entity import in " + file + " at line " + (i + 1) + ": " + line);
+                }
+                if (line.startsWith("import com.preston.codex.data.dao.")) {
+                    throw new AssertionError("Forbidden data.dao import in " + file + " at line " + (i + 1) + ": " + line);
+                }
+            }
+        }
+    }
 }

@@ -27,6 +27,15 @@ jobs:
       - name: Run unit tests
         run: ./gradlew test --stacktrace
 
+      - name: Verify no INTERNET permission in release manifest
+        run: |
+          ./gradlew processReleaseManifest --quiet
+          if grep -q 'android.permission.INTERNET' app/build/intermediates/merged_manifests/release/AndroidManifest.xml; then
+            echo "ERROR: INTERNET permission found in release manifest" >&2
+            exit 1
+          fi
+          echo "OK: No INTERNET permission in release manifest"
+
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
 

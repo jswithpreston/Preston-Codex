@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="widget_corner_radius">20dp</dimen>
+    <dimen name="widget_inner_corner_radius">12dp</dimen>
+    <dimen name="widget_pill_corner_radius">999dp</dimen>
+    <dimen name="widget_padding_small">12dp</dimen>
+    <dimen name="widget_padding_medium">14dp</dimen>
+    <dimen name="widget_padding_large">16dp</dimen>
+    <dimen name="widget_stripe_width">2dp</dimen>
+    <dimen name="widget_button_height">36dp</dimen>
+</resources>

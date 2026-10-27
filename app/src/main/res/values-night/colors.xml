@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Warm Editorial Scholar Theme Tokens (Dark) -->
+    <color name="widget_background">#1E222B</color>
+    <color name="widget_border">#2E3440</color>
+    <color name="widget_text_primary">#F3F0EB</color>
+    <color name="widget_text_secondary">#A0998E</color>
+    <color name="widget_amber">#E09F3E</color>
+    <color name="widget_amber_subtle">#2E2619</color>
+    <color name="widget_amber_border">#5C451F</color>
+    <color name="widget_amber_badge_text">#E09F3E</color>
+    <color name="widget_takeaway_bg">#252A36</color>
+    <color name="widget_takeaway_border">#333A4A</color>
+    <color name="widget_takeaway_text">#D0CAC0</color>
+    <color name="widget_divider">#2A303C</color>
+    <color name="widget_button_secondary_bg">#2A303C</color>
+    <color name="widget_button_secondary_text">#F3F0EB</color>
+    <color name="widget_button_primary_bg">#E09F3E</color>
+    <color name="widget_button_primary_text">#14213D</color>
+</resources>

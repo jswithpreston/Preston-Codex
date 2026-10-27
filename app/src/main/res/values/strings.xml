@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Preston Codex</string>
+
+    <!-- Notification channel strings -->
+    <string name="notif_channel_insight_name">Daily Insight</string>
+    <string name="notif_channel_insight_desc">Daily morning insight from your knowledge library</string>
+    <string name="notif_channel_review_name">Review Reminders</string>
+    <string name="notif_channel_review_desc">Daily reminders for knowledge recall and spaced repetition</string>
+
+    <!-- Notification content strings -->
+    <string name="notif_insight_title">Insight of the Day</string>
+    <string name="notif_insight_public_text">Open Preston Codex to view today\'s insight</string>
+    <string name="notif_review_title">Knowledge Reviews Due</string>
+    <string name="notif_review_text_single">You have 1 item ready for spaced review today</string>
+    <string name="notif_review_text_multiple">You have %1$d items ready for spaced review today</string>
+    <string name="notif_review_public_text">Open Preston Codex to complete your daily reviews</string>
+
+    <!-- Widget strings -->
+    <string name="widget_heading_insight">INSIGHT OF THE DAY</string>
+    <string name="widget_heading_takeaway">TAKEAWAY</string>
+    <string name="widget_action_shuffle">Shuffle</string>
+    <string name="widget_action_bookmark">Bookmark</string>
+    <string name="widget_action_bookmarked">Bookmarked</string>
+    <string name="widget_empty_message">Add knowledge entries to see your daily insight.</string>
+    <string name="widget_small_label">Preston Codex (Small)</string>
+    <string name="widget_medium_label">Preston Codex (Medium)</string>
+    <string name="widget_large_label">Preston Codex (Large)</string>
 </resources>

@@ -18,6 +18,7 @@ room-testing        = { module = "androidx.room:room-testing",          version.
 androidx-test-core  = { module = "androidx.test:core",                  version.ref = "androidx-test-core" }
 androidx-test-junit = { module = "androidx.test.ext:junit",             version.ref = "androidx-test-junit" }
 workmanager         = { module = "androidx.work:work-runtime",          version.ref = "workmanager" }
+work-testing        = { module = "androidx.work:work-testing",          version.ref = "workmanager" }
 material            = { module = "com.google.android.material:material", version.ref = "material" }
 desugar-jdk-libs    = { module = "com.android.tools:desugar_jdk_libs",  version.ref = "desugar" }
 junit               = { module = "junit:junit",                         version.ref = "junit" }
