@@ -210,4 +210,113 @@ public class AppContainer {
         }
         return notificationScheduler;
     }
+
+    private com.preston.codex.domain.time.LocalDateProvider localDateProvider;
+    private com.preston.codex.domain.tasks.repository.TaskRepository taskRepository;
+    private com.preston.codex.domain.tasks.recurrence.OccurrenceGenerator occurrenceGenerator;
+    private com.preston.codex.domain.tasks.recurrence.RecurrenceService recurrenceService;
+    private com.preston.codex.domain.tasks.service.TaskService taskService;
+    private com.preston.codex.domain.tasks.recurrence.RecurrenceEditService recurrenceEditService;
+    private com.preston.codex.domain.tasks.missed.MissedOccurrenceService missedOccurrenceService;
+    private com.preston.codex.domain.tasks.postpone.PostponementService postponementService;
+    private com.preston.codex.domain.tasks.backlog.BacklogReviewService backlogReviewService;
+
+    public synchronized com.preston.codex.domain.time.LocalDateProvider getLocalDateProvider() {
+        if (localDateProvider == null) {
+            localDateProvider = new com.preston.codex.domain.time.LocalDateProvider(clock, zoneSupplier);
+        }
+        return localDateProvider;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.repository.TaskRepository getTaskRepository() {
+        if (taskRepository == null) {
+            taskRepository = new com.preston.codex.data.repository.RoomTaskRepository(
+                    getDatabase().taskDao(),
+                    getDatabase().taskTagDao(),
+                    getDatabase().recurrenceRuleDao(),
+                    getDatabase().taskOccurrenceDao(),
+                    getDatabase().taskEventDao(),
+                    getDatabase().rescheduleHistoryDao(),
+                    getDatabase().reminderStateDao()
+            );
+        }
+        return taskRepository;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.recurrence.OccurrenceGenerator getOccurrenceGenerator() {
+        if (occurrenceGenerator == null) {
+            occurrenceGenerator = new com.preston.codex.domain.tasks.recurrence.OccurrenceGenerator();
+        }
+        return occurrenceGenerator;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.recurrence.RecurrenceService getRecurrenceService() {
+        if (recurrenceService == null) {
+            recurrenceService = new com.preston.codex.domain.tasks.recurrence.RecurrenceService(
+                    getTaskRepository(),
+                    getOccurrenceGenerator(),
+                    getLocalDateProvider(),
+                    getTransactionRunner()
+            );
+        }
+        return recurrenceService;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.service.TaskService getTaskService() {
+        if (taskService == null) {
+            taskService = new com.preston.codex.domain.tasks.service.TaskService(
+                    getTaskRepository(),
+                    getRecurrenceService(),
+                    getLocalDateProvider(),
+                    getKeyValueStore(),
+                    getTransactionRunner()
+            );
+        }
+        return taskService;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.recurrence.RecurrenceEditService getRecurrenceEditService() {
+        if (recurrenceEditService == null) {
+            recurrenceEditService = new com.preston.codex.domain.tasks.recurrence.RecurrenceEditService(
+                    getTaskRepository(),
+                    getRecurrenceService(),
+                    getLocalDateProvider(),
+                    getTransactionRunner()
+            );
+        }
+        return recurrenceEditService;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.missed.MissedOccurrenceService getMissedOccurrenceService() {
+        if (missedOccurrenceService == null) {
+            missedOccurrenceService = new com.preston.codex.domain.tasks.missed.MissedOccurrenceService(
+                    getTaskRepository(),
+                    getLocalDateProvider(),
+                    getTransactionRunner()
+            );
+        }
+        return missedOccurrenceService;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.postpone.PostponementService getPostponementService() {
+        if (postponementService == null) {
+            postponementService = new com.preston.codex.domain.tasks.postpone.PostponementService(
+                    getTaskRepository(),
+                    getLocalDateProvider(),
+                    getTransactionRunner()
+            );
+        }
+        return postponementService;
+    }
+
+    public synchronized com.preston.codex.domain.tasks.backlog.BacklogReviewService getBacklogReviewService() {
+        if (backlogReviewService == null) {
+            backlogReviewService = new com.preston.codex.domain.tasks.backlog.BacklogReviewService(
+                    getTaskRepository(),
+                    getLocalDateProvider(),
+                    getTransactionRunner()
+            );
+        }
+        return backlogReviewService;
+    }
 }

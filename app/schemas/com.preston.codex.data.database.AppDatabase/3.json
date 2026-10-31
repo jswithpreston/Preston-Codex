@@ -1,0 +1,1858 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "7267138e85d3a04567a9fb60f4cf1b88",
+    "entities": [
+      {
+        "tableName": "knowledge_source",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `author` TEXT NOT NULL, `title_key` TEXT NOT NULL, `author_key` TEXT NOT NULL, `source_type` TEXT NOT NULL, `publisher` TEXT, `year` INTEGER, `isbn` TEXT, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titleKey",
+            "columnName": "title_key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "authorKey",
+            "columnName": "author_key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceType",
+            "columnName": "source_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publisher",
+            "columnName": "publisher",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "isbn",
+            "columnName": "isbn",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_knowledge_source_title_key_author_key",
+            "unique": true,
+            "columnNames": [
+              "title_key",
+              "author_key"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_knowledge_source_title_key_author_key` ON `${TABLE_NAME}` (`title_key`, `author_key`)"
+          },
+          {
+            "name": "index_knowledge_source_author_key",
+            "unique": false,
+            "columnNames": [
+              "author_key"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_source_author_key` ON `${TABLE_NAME}` (`author_key`)"
+          }
+        ]
+      },
+      {
+        "tableName": "knowledge_entry",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `source_id` INTEGER NOT NULL, `stable_id` TEXT, `fingerprint` TEXT NOT NULL, `content_hash` TEXT NOT NULL, `imported_hash` TEXT NOT NULL, `quote_text` TEXT NOT NULL, `insight_text` TEXT, `source_ref` TEXT, `application` TEXT, `entry_type` TEXT NOT NULL, `review_mode` TEXT, `extra_fields` TEXT, `raw_markdown` TEXT, `is_bookmarked` INTEGER NOT NULL, `is_archived` INTEGER NOT NULL, `is_trashed` INTEGER NOT NULL, `trashed_at` INTEGER, `import_batch_id` INTEGER, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, FOREIGN KEY(`source_id`) REFERENCES `knowledge_source`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT , FOREIGN KEY(`import_batch_id`) REFERENCES `import_batch`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceId",
+            "columnName": "source_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stableId",
+            "columnName": "stable_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fingerprint",
+            "columnName": "fingerprint",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentHash",
+            "columnName": "content_hash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importedHash",
+            "columnName": "imported_hash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quoteText",
+            "columnName": "quote_text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "insightText",
+            "columnName": "insight_text",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "sourceRef",
+            "columnName": "source_ref",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "application",
+            "columnName": "application",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "entryType",
+            "columnName": "entry_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewMode",
+            "columnName": "review_mode",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "extraFields",
+            "columnName": "extra_fields",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rawMarkdown",
+            "columnName": "raw_markdown",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isBookmarked",
+            "columnName": "is_bookmarked",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isArchived",
+            "columnName": "is_archived",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isTrashed",
+            "columnName": "is_trashed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "trashedAt",
+            "columnName": "trashed_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "importBatchId",
+            "columnName": "import_batch_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_knowledge_entry_fingerprint",
+            "unique": true,
+            "columnNames": [
+              "fingerprint"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_knowledge_entry_fingerprint` ON `${TABLE_NAME}` (`fingerprint`)"
+          },
+          {
+            "name": "index_knowledge_entry_stable_id",
+            "unique": true,
+            "columnNames": [
+              "stable_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_knowledge_entry_stable_id` ON `${TABLE_NAME}` (`stable_id`)"
+          },
+          {
+            "name": "index_knowledge_entry_source_id",
+            "unique": false,
+            "columnNames": [
+              "source_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_entry_source_id` ON `${TABLE_NAME}` (`source_id`)"
+          },
+          {
+            "name": "index_knowledge_entry_import_batch_id",
+            "unique": false,
+            "columnNames": [
+              "import_batch_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_entry_import_batch_id` ON `${TABLE_NAME}` (`import_batch_id`)"
+          },
+          {
+            "name": "index_knowledge_entry_is_archived",
+            "unique": false,
+            "columnNames": [
+              "is_archived"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_entry_is_archived` ON `${TABLE_NAME}` (`is_archived`)"
+          },
+          {
+            "name": "index_knowledge_entry_is_trashed",
+            "unique": false,
+            "columnNames": [
+              "is_trashed"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_entry_is_trashed` ON `${TABLE_NAME}` (`is_trashed`)"
+          },
+          {
+            "name": "index_knowledge_entry_is_bookmarked",
+            "unique": false,
+            "columnNames": [
+              "is_bookmarked"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_entry_is_bookmarked` ON `${TABLE_NAME}` (`is_bookmarked`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_source",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "source_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "import_batch",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "import_batch_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "knowledge_tag",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_knowledge_tag_name",
+            "unique": true,
+            "columnNames": [
+              "name"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_knowledge_tag_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ]
+      },
+      {
+        "tableName": "knowledge_entry_tag",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entry_id` INTEGER NOT NULL, `tag_id` INTEGER NOT NULL, PRIMARY KEY(`entry_id`, `tag_id`), FOREIGN KEY(`entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`tag_id`) REFERENCES `knowledge_tag`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "entryId",
+            "columnName": "entry_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tagId",
+            "columnName": "tag_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entry_id",
+            "tag_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_knowledge_entry_tag_tag_id",
+            "unique": false,
+            "columnNames": [
+              "tag_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_entry_tag_tag_id` ON `${TABLE_NAME}` (`tag_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_entry",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "knowledge_tag",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "tag_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "knowledge_relationship",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `from_id` INTEGER NOT NULL, `to_id` INTEGER NOT NULL, `rel_type` TEXT NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`from_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`to_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fromId",
+            "columnName": "from_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toId",
+            "columnName": "to_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "relType",
+            "columnName": "rel_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_knowledge_relationship_from_id_to_id_rel_type",
+            "unique": true,
+            "columnNames": [
+              "from_id",
+              "to_id",
+              "rel_type"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_knowledge_relationship_from_id_to_id_rel_type` ON `${TABLE_NAME}` (`from_id`, `to_id`, `rel_type`)"
+          },
+          {
+            "name": "index_knowledge_relationship_to_id",
+            "unique": false,
+            "columnNames": [
+              "to_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_knowledge_relationship_to_id` ON `${TABLE_NAME}` (`to_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_entry",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "from_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "knowledge_entry",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "to_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "import_batch",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `filename` TEXT NOT NULL, `content_hash` TEXT NOT NULL, `started_at` INTEGER NOT NULL, `finished_at` INTEGER, `outcome` TEXT NOT NULL, `entries_parsed` INTEGER NOT NULL, `entries_new` INTEGER NOT NULL, `entries_unchanged` INTEGER NOT NULL, `entries_conflict` INTEGER NOT NULL, `entries_duplicate` INTEGER NOT NULL, `entries_invalid` INTEGER NOT NULL, `entries_skipped` INTEGER NOT NULL, `ids_attached` INTEGER NOT NULL, `error_message` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "filename",
+            "columnName": "filename",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentHash",
+            "columnName": "content_hash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "started_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "finishedAt",
+            "columnName": "finished_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "outcome",
+            "columnName": "outcome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesParsed",
+            "columnName": "entries_parsed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesNew",
+            "columnName": "entries_new",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesUnchanged",
+            "columnName": "entries_unchanged",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesConflict",
+            "columnName": "entries_conflict",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesDuplicate",
+            "columnName": "entries_duplicate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesInvalid",
+            "columnName": "entries_invalid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entriesSkipped",
+            "columnName": "entries_skipped",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idsAttached",
+            "columnName": "ids_attached",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "errorMessage",
+            "columnName": "error_message",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "import_result",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `batch_id` INTEGER NOT NULL, `entry_index` INTEGER NOT NULL, `stable_id` TEXT, `fingerprint` TEXT, `classification` TEXT NOT NULL, `existing_entry_id` INTEGER, `inserted_entry_id` INTEGER, `incoming_payload` TEXT, `incoming_hash` TEXT, `resolution_status` TEXT NOT NULL, `error_message` TEXT, FOREIGN KEY(`batch_id`) REFERENCES `import_batch`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`existing_entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`inserted_entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "batchId",
+            "columnName": "batch_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entryIndex",
+            "columnName": "entry_index",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stableId",
+            "columnName": "stable_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fingerprint",
+            "columnName": "fingerprint",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "classification",
+            "columnName": "classification",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "existingEntryId",
+            "columnName": "existing_entry_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "insertedEntryId",
+            "columnName": "inserted_entry_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "incomingPayload",
+            "columnName": "incoming_payload",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "incomingHash",
+            "columnName": "incoming_hash",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "resolutionStatus",
+            "columnName": "resolution_status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "errorMessage",
+            "columnName": "error_message",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_import_result_batch_id_entry_index",
+            "unique": true,
+            "columnNames": [
+              "batch_id",
+              "entry_index"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_import_result_batch_id_entry_index` ON `${TABLE_NAME}` (`batch_id`, `entry_index`)"
+          },
+          {
+            "name": "index_import_result_existing_entry_id",
+            "unique": false,
+            "columnNames": [
+              "existing_entry_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_import_result_existing_entry_id` ON `${TABLE_NAME}` (`existing_entry_id`)"
+          },
+          {
+            "name": "index_import_result_inserted_entry_id",
+            "unique": false,
+            "columnNames": [
+              "inserted_entry_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_import_result_inserted_entry_id` ON `${TABLE_NAME}` (`inserted_entry_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "import_batch",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "batch_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "knowledge_entry",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "existing_entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "knowledge_entry",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "inserted_entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "daily_insight_selection",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`local_date` TEXT NOT NULL, `entry_id` INTEGER, `selected_at` INTEGER NOT NULL, `was_shuffled` INTEGER NOT NULL, PRIMARY KEY(`local_date`), FOREIGN KEY(`entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "localDate",
+            "columnName": "local_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entryId",
+            "columnName": "entry_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "selectedAt",
+            "columnName": "selected_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wasShuffled",
+            "columnName": "was_shuffled",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "local_date"
+          ]
+        },
+        "indices": [
+          {
+            "name": "idx_dis_entry_id",
+            "unique": false,
+            "columnNames": [
+              "entry_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `idx_dis_entry_id` ON `${TABLE_NAME}` (`entry_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_entry",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "daily_insight_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `local_date` TEXT NOT NULL, `entry_id` INTEGER, `reason` TEXT NOT NULL, `selected_at` INTEGER NOT NULL, FOREIGN KEY(`entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localDate",
+            "columnName": "local_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entryId",
+            "columnName": "entry_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "reason",
+            "columnName": "reason",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "selectedAt",
+            "columnName": "selected_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "idx_dih_local_date",
+            "unique": false,
+            "columnNames": [
+              "local_date"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `idx_dih_local_date` ON `${TABLE_NAME}` (`local_date`)"
+          },
+          {
+            "name": "idx_dih_entry_id",
+            "unique": false,
+            "columnNames": [
+              "entry_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `idx_dih_entry_id` ON `${TABLE_NAME}` (`entry_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_entry",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "review_schedule",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entry_id` INTEGER NOT NULL, `step` INTEGER NOT NULL, `next_review_date` TEXT NOT NULL, `last_reviewed_at` INTEGER NOT NULL, `review_count` INTEGER NOT NULL, PRIMARY KEY(`entry_id`), FOREIGN KEY(`entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "entryId",
+            "columnName": "entry_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "step",
+            "columnName": "step",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nextReviewDate",
+            "columnName": "next_review_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastReviewedAt",
+            "columnName": "last_reviewed_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewCount",
+            "columnName": "review_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entry_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "idx_rs_next_review_date",
+            "unique": false,
+            "columnNames": [
+              "next_review_date"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `idx_rs_next_review_date` ON `${TABLE_NAME}` (`next_review_date`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_entry",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "review_record",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `entry_id` INTEGER NOT NULL, `reviewed_at` INTEGER NOT NULL, `reviewed_local_date` TEXT NOT NULL, `rating` TEXT NOT NULL, `previous_step` INTEGER NOT NULL, `previous_interval_days` INTEGER NOT NULL, `previous_next_review_date` TEXT, `new_step` INTEGER NOT NULL, `new_interval_days` INTEGER NOT NULL, `next_review_date` TEXT NOT NULL, FOREIGN KEY(`entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entryId",
+            "columnName": "entry_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewedAt",
+            "columnName": "reviewed_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewedLocalDate",
+            "columnName": "reviewed_local_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "previousStep",
+            "columnName": "previous_step",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "previousIntervalDays",
+            "columnName": "previous_interval_days",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "previousNextReviewDate",
+            "columnName": "previous_next_review_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "newStep",
+            "columnName": "new_step",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newIntervalDays",
+            "columnName": "new_interval_days",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nextReviewDate",
+            "columnName": "next_review_date",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "idx_rr_entry_id",
+            "unique": false,
+            "columnNames": [
+              "entry_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `idx_rr_entry_id` ON `${TABLE_NAME}` (`entry_id`)"
+          },
+          {
+            "name": "idx_rr_reviewed_local_date",
+            "unique": false,
+            "columnNames": [
+              "reviewed_local_date"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `idx_rr_reviewed_local_date` ON `${TABLE_NAME}` (`reviewed_local_date`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "knowledge_entry",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_kind` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT, `status` TEXT NOT NULL, `previous_task_id` INTEGER, `knowledge_entry_id` INTEGER, `reflection` TEXT, `is_flexible` INTEGER NOT NULL, `priority` TEXT NOT NULL, `deadline` TEXT, `estimated_duration_minutes` INTEGER, `scheduled_date` TEXT, `scheduled_time` TEXT, `auto_reschedule_count` INTEGER NOT NULL, `completed_at` INTEGER, `cancelled_at` INTEGER, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, FOREIGN KEY(`previous_task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`knowledge_entry_id`) REFERENCES `knowledge_entry`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskKind",
+            "columnName": "task_kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "previousTaskId",
+            "columnName": "previous_task_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "knowledgeEntryId",
+            "columnName": "knowledge_entry_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "reflection",
+            "columnName": "reflection",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isFlexible",
+            "columnName": "is_flexible",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priority",
+            "columnName": "priority",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deadline",
+            "columnName": "deadline",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "estimatedDurationMinutes",
+            "columnName": "estimated_duration_minutes",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "scheduledDate",
+            "columnName": "scheduled_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "scheduledTime",
+            "columnName": "scheduled_time",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "autoRescheduleCount",
+            "columnName": "auto_reschedule_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedAt",
+            "columnName": "completed_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "cancelledAt",
+            "columnName": "cancelled_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_previous_task_id",
+            "unique": false,
+            "columnNames": [
+              "previous_task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_previous_task_id` ON `${TABLE_NAME}` (`previous_task_id`)"
+          },
+          {
+            "name": "index_task_knowledge_entry_id",
+            "unique": false,
+            "columnNames": [
+              "knowledge_entry_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_knowledge_entry_id` ON `${TABLE_NAME}` (`knowledge_entry_id`)"
+          },
+          {
+            "name": "index_task_scheduled_date",
+            "unique": false,
+            "columnNames": [
+              "scheduled_date"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_scheduled_date` ON `${TABLE_NAME}` (`scheduled_date`)"
+          },
+          {
+            "name": "index_task_deadline",
+            "unique": false,
+            "columnNames": [
+              "deadline"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_deadline` ON `${TABLE_NAME}` (`deadline`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "previous_task_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "knowledge_entry",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "knowledge_entry_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_tag",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_id` INTEGER NOT NULL, `tag` TEXT NOT NULL, PRIMARY KEY(`task_id`, `tag`), FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tag",
+            "columnName": "tag",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "task_id",
+            "tag"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_tag_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_tag_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "recurrence_rule",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `type` TEXT NOT NULL, `interval` INTEGER NOT NULL, `weekdays` TEXT, `start_date` TEXT NOT NULL, `end_date` TEXT, `occurrence_count` INTEGER, `anchor_day_of_month` INTEGER, `missed_policy` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "interval",
+            "columnName": "interval",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weekdays",
+            "columnName": "weekdays",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "start_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endDate",
+            "columnName": "end_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "occurrenceCount",
+            "columnName": "occurrence_count",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "anchorDayOfMonth",
+            "columnName": "anchor_day_of_month",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "missedPolicy",
+            "columnName": "missed_policy",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_recurrence_rule_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_recurrence_rule_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_occurrence",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `rule_id` INTEGER NOT NULL, `occurrence_date` TEXT NOT NULL, `effective_date` TEXT NOT NULL, `status` TEXT NOT NULL, `title_override` TEXT, `time_override` TEXT, `note_override` TEXT, `reflection` TEXT, `auto_reschedule_count` INTEGER NOT NULL, `completed_at` INTEGER, `cancelled_at` INTEGER, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`rule_id`) REFERENCES `recurrence_rule`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ruleId",
+            "columnName": "rule_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "occurrenceDate",
+            "columnName": "occurrence_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "effectiveDate",
+            "columnName": "effective_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titleOverride",
+            "columnName": "title_override",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "timeOverride",
+            "columnName": "time_override",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "noteOverride",
+            "columnName": "note_override",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "reflection",
+            "columnName": "reflection",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "autoRescheduleCount",
+            "columnName": "auto_reschedule_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedAt",
+            "columnName": "completed_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "cancelledAt",
+            "columnName": "cancelled_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_occurrence_task_id_occurrence_date",
+            "unique": true,
+            "columnNames": [
+              "task_id",
+              "occurrence_date"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_task_occurrence_task_id_occurrence_date` ON `${TABLE_NAME}` (`task_id`, `occurrence_date`)"
+          },
+          {
+            "name": "index_task_occurrence_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_occurrence_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          },
+          {
+            "name": "index_task_occurrence_rule_id",
+            "unique": false,
+            "columnNames": [
+              "rule_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_occurrence_rule_id` ON `${TABLE_NAME}` (`rule_id`)"
+          },
+          {
+            "name": "index_task_occurrence_effective_date",
+            "unique": false,
+            "columnNames": [
+              "effective_date"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_occurrence_effective_date` ON `${TABLE_NAME}` (`effective_date`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "recurrence_rule",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "rule_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_event",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `occurrence_id` INTEGER, `event_type` TEXT NOT NULL, `details` TEXT, `timestamp` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`occurrence_id`) REFERENCES `task_occurrence`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "occurrenceId",
+            "columnName": "occurrence_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "eventType",
+            "columnName": "event_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "details",
+            "columnName": "details",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_event_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_event_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          },
+          {
+            "name": "index_task_event_occurrence_id",
+            "unique": false,
+            "columnNames": [
+              "occurrence_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_event_occurrence_id` ON `${TABLE_NAME}` (`occurrence_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "task_occurrence",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "occurrence_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "reschedule_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `occurrence_id` INTEGER, `from_date` TEXT, `to_date` TEXT NOT NULL, `reason` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`occurrence_id`) REFERENCES `task_occurrence`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "occurrenceId",
+            "columnName": "occurrence_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "fromDate",
+            "columnName": "from_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "toDate",
+            "columnName": "to_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reason",
+            "columnName": "reason",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_reschedule_history_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reschedule_history_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          },
+          {
+            "name": "index_reschedule_history_occurrence_id",
+            "unique": false,
+            "columnNames": [
+              "occurrence_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reschedule_history_occurrence_id` ON `${TABLE_NAME}` (`occurrence_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "task_occurrence",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "occurrence_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "reminder_state",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reminder_type` TEXT NOT NULL, `owner_type` TEXT NOT NULL, `owner_id` INTEGER NOT NULL, `trigger_at` INTEGER NOT NULL, `trigger_local_date` TEXT NOT NULL, `trigger_local_time` TEXT, `channel` TEXT NOT NULL, `status` TEXT NOT NULL, `fired_at` INTEGER, `idempotency_key` TEXT NOT NULL, `created_at` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reminderType",
+            "columnName": "reminder_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ownerType",
+            "columnName": "owner_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ownerId",
+            "columnName": "owner_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerAt",
+            "columnName": "trigger_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerLocalDate",
+            "columnName": "trigger_local_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerLocalTime",
+            "columnName": "trigger_local_time",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "channel",
+            "columnName": "channel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firedAt",
+            "columnName": "fired_at",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "idempotencyKey",
+            "columnName": "idempotency_key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_reminder_state_idempotency_key",
+            "unique": true,
+            "columnNames": [
+              "idempotency_key"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_reminder_state_idempotency_key` ON `${TABLE_NAME}` (`idempotency_key`)"
+          },
+          {
+            "name": "index_reminder_state_owner_type_owner_id",
+            "unique": false,
+            "columnNames": [
+              "owner_type",
+              "owner_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reminder_state_owner_type_owner_id` ON `${TABLE_NAME}` (`owner_type`, `owner_id`)"
+          },
+          {
+            "name": "index_reminder_state_status",
+            "unique": false,
+            "columnNames": [
+              "status"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reminder_state_status` ON `${TABLE_NAME}` (`status`)"
+          },
+          {
+            "name": "index_reminder_state_trigger_at",
+            "unique": false,
+            "columnNames": [
+              "trigger_at"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reminder_state_trigger_at` ON `${TABLE_NAME}` (`trigger_at`)"
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7267138e85d3a04567a9fb60f4cf1b88')"
+    ]
+  }
+}

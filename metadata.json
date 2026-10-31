@@ -1,0 +1,8 @@
+{
+  "name": "Preston Codex",
+  "description": "An offline-first personal planner and knowledge-retention system with active recall, daily insights, markdown sync, and task scheduling.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
